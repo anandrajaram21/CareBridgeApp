@@ -1,11 +1,25 @@
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { View, SafeAreaView } from "react-native";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RootSiblingParent } from "react-native-root-siblings";
+import Home from "./components/Home";
+import Request from "./components/Request";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <RootSiblingParent>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Volunteers" component={Request} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RootSiblingParent>
   );
 }
